@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbSCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mId" Type="nvarchar" MaxLength="10" />
+    <Property Name="mPwd" Type="nvarchar" MaxLength="100" />
+    <Property Name="mName" Type="nvarchar" MaxLength="50" />
+    <Property Name="mEmail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="oId" Type="nvarchar" MaxLength="50" />
+    <Property Name="mId" Type="nvarchar" MaxLength="50" />
+    <Property Name="mName" Type="nvarchar" MaxLength="50" />
+    <Property Name="mEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="oAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="oDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="oId" Type="nvarchar" MaxLength="50" />
+    <Property Name="mId" Type="nvarchar" MaxLength="50" />
+    <Property Name="pId" Type="nvarchar" MaxLength="50" />
+    <Property Name="pName" Type="nvarchar" MaxLength="50" />
+    <Property Name="pPrice" Type="int" />
+    <Property Name="oNum" Type="int" />
+    <Property Name="oIsApproved" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pId" Type="nvarchar" MaxLength="10" />
+    <Property Name="pName" Type="nvarchar" MaxLength="100" />
+    <Property Name="pPrice" Type="int" />
+    <Property Name="pCategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="pSinger" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pimg" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityContainer Name="dbSCModelStoreContainer">
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

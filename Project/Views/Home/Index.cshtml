@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Project.Models.Product>
+
+
+
+@{
+    ViewBag.Title = "產品列表";
+}
+
+
+<link href="~/Content/PagedList.css" rel="stylesheet">
+
+<div class="container">
+
+
+    <div class="row" style="margin-top:20px;">
+
+        @foreach (var item in Model)
+        {
+            <div class="section text-h-center">
+                <div class="col-md-4">
+                    <div class="thumb-box">
+                        <div class="text-center">
+                            <img src="~/images/@item.Pimg" style="width:200px;height:200px;">
+                            <div class="caption">
+                                <h4><b>@item.pName</b></h4>
+                                <p>單價：@item.pPrice</p>
+                                <p>歌手：@item.pSinger</p>
+                                <p>音樂類別：@item.pCategory</p>
+                                <p><a href="@Url.Action("AddCar", "Member")?pId=@item.pId" class="btn btn-primary">加入購物車</a></p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Project.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "會員購物車清單";
+    Layout = "~/Views/Shared/_LayoutMember.cshtml";
+}
+
+<h2>會員購物車清單</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.oId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oIsApproved)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.oId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pName)
+            </td>o
+            <td>
+                @Html.DisplayFor(modelItem => item.pPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.oNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.oIsApproved)
+            </td>
+            <td>
+                <a href="@Url.Action("DeleteCar")?fId=@item.fId"
+                   class="btn btn-danger"
+                   onclick="return confirm('確定放棄購買 @item.pName 嗎？' )">刪除購物車</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<form action="@Url.Action("ShoppingCar")" method="post">
+    <div class="form-horizontal">
+        <h4>填寫訂單收件人資料</h4>
+        <hr />
+
+        <div class="form-group">
+            <span class="control-label col-md-2">收件人姓名</span>
+            <div class="col-md-10">
+                <input type="text" id="mName" name="mName" required="required" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">收件人信箱</span>
+            <div class="col-md-10">
+                <input type="email" id="mEmail" name="mEmail" required="required" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">收件人地址</span>
+            <div class="col-md-10">
+                <input type="text" id="oAddress" name="oAddress" required="required" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="確認訂購" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>

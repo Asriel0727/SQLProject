@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Project.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "訂單明細";
+    Layout = "~/Views/Shared/_LayoutMember.cshtml";
+}
+
+<h2>訂單明細</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.mId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oIsApproved)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.mId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.oNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.oIsApproved)
+            </td>
+
+
+        </tr>
+    }
+
+</table>
+
